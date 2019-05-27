@@ -1,7 +1,7 @@
-package users;
+package user;
 
 
-public class Users {
+public class User {
 
 
     private long id;
@@ -13,18 +13,8 @@ public class Users {
     private String password;
 
 
-    public Users() {
-    }
-
-
-    public Users(long id, String login, String password) {
+    public User(long id, String login, String password) {
         this.setId(id);
-        this.setLogin(login);
-        this.setPassword(password);
-    }
-
-    public Users(String login, String password) {
-        this.setId(-1);
         this.setLogin(login);
         this.setPassword(password);
     }
@@ -54,10 +44,6 @@ public class Users {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Users { id = " + id + ", login = " + login + ", password = " + password + "}";
-    }
 
 }
 

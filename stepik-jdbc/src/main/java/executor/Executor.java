@@ -1,6 +1,7 @@
 package executor;
 
-import utils.Utils;
+import util.Util;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,13 +10,13 @@ import java.sql.Statement;
 
 public class Executor {
     private final Connection connection;
-    private Utils utils = new Utils();
 
     public Executor() {
-        this.connection = utils.getConnection();
+        Util util = new Util();
+        this.connection = util.getConnection();
     }
 
-    public void execUpdate(String update) throws SQLException {
+    public void execUpdate(String update) {
         try {
             connection.setAutoCommit(false);
             Statement stmt = connection.createStatement();

@@ -1,9 +1,8 @@
-package servlets;
+package servlet;
 
+import user.User;
 import userService.UserService;
-import users.Users;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,16 +12,13 @@ import java.sql.SQLException;
 public class SignInServlet extends HttpServlet {
     private UserService userService = new UserService();
 
-    public SignInServlet() {
-    }
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         try {
-            Users users = userService.getUser(login);
-            if (users == null || !users.getPassword().equals(password)) {
+            User user = userService.getUser(login);
+            if (user == null || !user.getPassword().equals(password)) {
                 resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 resp.getWriter().println("Unauthorized");
             } else {
@@ -32,7 +28,8 @@ public class SignInServlet extends HttpServlet {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.getWriter().println("Unauthorized");
         }
 
 

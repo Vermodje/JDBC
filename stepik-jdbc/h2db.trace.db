@@ -1,0 +1,4 @@
+05-27 15:36:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "USERS" не найдена
+Table "USERS" not found; SQL statement:
+select * from users where login='admin2' [42102-187]

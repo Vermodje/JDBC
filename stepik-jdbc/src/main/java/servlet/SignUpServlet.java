@@ -1,4 +1,4 @@
-package servlets;
+package servlet;
 
 import userService.UserService;
 
@@ -11,9 +11,6 @@ import java.sql.SQLException;
 
 public class SignUpServlet extends HttpServlet {
     private UserService userService = new UserService();
-    public SignUpServlet() {
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");

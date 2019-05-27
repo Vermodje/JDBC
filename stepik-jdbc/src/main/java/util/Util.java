@@ -1,16 +1,15 @@
-package utils;
+package util;
 
 import org.h2.jdbcx.JdbcDataSource;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Utils {
+public class Util {
     private final Connection connection;
 
-    public Utils() {
+    public Util() {
         this.connection = getH2Connection();
     }
 
@@ -18,7 +17,7 @@ public class Utils {
         return connection;
     }
     // Settings for Test
-    /*public static Connection getH2Connection() {
+    /*private static Connection getH2Connection() {
         try {
             String url = "jdbc:h2:./h2db";
             String name = "tully";
@@ -29,15 +28,14 @@ public class Utils {
             ds.setUser(name);
             ds.setPassword(pass);
 
-            Connection connection = DriverManager.getConnection(url, name, pass);
-            return connection;
+            return DriverManager.getConnection(url, name, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 
-    /*public static Connection getMysqlConnection() {
+    public static Connection getMysqlConnection() {
         try {
             DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
 
@@ -53,8 +51,7 @@ public class Utils {
 
             System.out.println("URL: " + url + "\n");
 
-            Connection connection = DriverManager.getConnection(url.toString());
-            return connection;
+            return DriverManager.getConnection(url.toString());
         } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -63,7 +60,7 @@ public class Utils {
 
 
     // My H2 Database Settings
-    public static Connection getH2Connection() {
+    private static Connection getH2Connection() {
         try {
             String url = "jdbc:h2:tcp://localhost/~/test";
             String name = "sa";
@@ -74,8 +71,7 @@ public class Utils {
             ds.setUser(name);
             ds.setPassword(pass);
 
-            Connection connection = DriverManager.getConnection(url, name, pass);
-            return connection;
+            return DriverManager.getConnection(url, name, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }
