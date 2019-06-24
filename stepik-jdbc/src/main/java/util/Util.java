@@ -3,6 +3,7 @@ package util;
 import org.h2.jdbcx.JdbcDataSource;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -10,7 +11,8 @@ public class Util {
     private final Connection connection;
 
     public Util() {
-        this.connection = getH2Connection();
+        //this.connection = getH2Connection();
+        this.connection = getMysqlConnection();
     }
 
     public Connection getConnection() {
@@ -33,7 +35,7 @@ public class Util {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     public static Connection getMysqlConnection() {
         try {
@@ -45,9 +47,9 @@ public class Util {
                     append("jdbc:mysql://").        //db type
                     append("localhost:").           //host name
                     append("3306/").                //port
-                    append("db_example?").          //db name
-                    append("user=tully&").          //login
-                    append("password=tully");       //password
+                    append("db_Example?").          //db name
+                    append("user=root&").          //login
+                    append("password=root");       //password
 
             System.out.println("URL: " + url + "\n");
 
@@ -56,11 +58,11 @@ public class Util {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 
 
     // My H2 Database Settings
-    private static Connection getH2Connection() {
+   /* private static Connection getH2Connection() {
         try {
             String url = "jdbc:h2:tcp://localhost/~/test";
             String name = "sa";
@@ -76,5 +78,5 @@ public class Util {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }
